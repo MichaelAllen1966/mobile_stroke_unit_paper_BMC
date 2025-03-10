@@ -86,26 +86,25 @@ The final datasets will cover these three main groups of people:
 
 \subsection{General method}
 
-
 The steps to create the mRS distributions are:
 
 \begin{enumerate}
-    \item Find the mRS distributions of populations before their stroke.
+    \item Estimate the mRS distributions of populations before their stroke.
     \begin{itemize}
         \item These data are available in the SSNAP data.
         \item We split the full cohort of patients into nLVO and LVO based on their NIHSS score (using NIHSS 11+ as a surrogate indicator of a large vessel occlusion stroke).
     \end{itemize}
-     \item Find the mRS distributions of populations that received no treatment.
+     \item Estimate the mRS distributions of populations that received no treatment.
     \begin{itemize}
         \item This data is available for two groups. The first group is patients with LVOs. The second group is a mix of patients with nLVOs and patients with LVOs.
         \item We combine the groups and infer the distribution for the population patients with nLVO (as nLVO-specific data is not available).
     \end{itemize}
-        \item Find the mRS distributions of populations that were treated after the time of no effect.
+        \item Estimate the mRS distributions of populations if they treated at the time of no beneficial effect.
     \begin{itemize}
         \item At the time of no effect, we assume that patients given the treatment will see no benefit but are still exposed to a risk of death from treatment.
-    \item We take the distributions for populations that received no treatment and adjust them for this predicted death rate in the absence of beneficial tratement effect.
+    \item We take the distributions for populations that received no treatment and adjust them for this predicted death rate in the absence of a beneficial treatment effect.
     \end{itemize}
-    \item Find the mRS distributions of populations that were treated at time zero.
+    \item Estimate the mRS distributions of populations if they were treated at time zero (the time of stroke).
     \begin{itemize}
         \item For IVT:
         \begin{itemize}
@@ -137,3 +136,19 @@ Figure \ref{fig:data_sources_grid} shows a summary of the data sources used to e
     \caption{Resulting reference distributions after combining data sources. Arrows show input and flow of data used to generate these populations.}
     \label{fig:data_sources_summary}
 \end{figure}
+
+\subsubsection{Pre-stroke mRS distribution}
+
+The pre-stroke mRS distribution was from the national stroke audit for patients admitted to hospital with stroke between 2016 and 2018. A NIHSS of 0-10 was taken as a surrogate of LVO, and NIHSS 11+ as a surrogate of LVO. This cut-ff was found to have maximum discrimination between LVO and nLVO \cite{perez_de_la_ossa_effect_2022}. Resulting pre-stroke mRS distributions are shown in table \ref{tab:pre_stroke}
+
+\begin{table}
+\caption{Pre-stroke mRS distributions for nLVO and LVO}\label{tab:pre_stroke}
+\centering
+
+\begin{tabular}{l | l l l l l l l}
+mRS & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+nLVO & 0.583 & 0.163 & 0.104 & 0.101 & 0.042 & 0.007 & 0 \\
+LVO & 0.408 & 0.144 & 0.12 & 0.166 & 0.118 & 0.044 & 0 \\
+\end{tabular}
+\end{table}
