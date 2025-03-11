@@ -1,3 +1,5 @@
+%%%%%%%%%%%%%% Change all tenses to past tesse
+
 \section{Outcome modelling}
 
 \subsection{Modified Rankin scale}
@@ -60,6 +62,17 @@ The model results in mRS probability distributions for nLVO treated with IVT and
     \includegraphics[width=1.0\linewidth]{images_modelling/probs_with_time.png}
     \caption{Final model predictions of mRS distributions for nLVO and LVO depending on time to treatment with IVT (for nLVO or LVO) or thrombectomy (for IVT and LVO).}
     \label{fig:probs_with_time}
+\end{figure}
+
+\subsection{Extrapolation of reperfusion effects back to time zero}
+
+In order to model the effectiveness of reperfusion at any given time point, we interpolate between the theoretical effectiveness at time zero (the time of stroke onset) and the time at which the treatment no longer has any efficacy (the time of no effect). Clinical trials model this decay as a linear decay on log odds of improved outcome \cite{emberson_effect_2014, fransen_time_2016}. An illustration of how this was done is shown in figure \ref{fig:decay}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\linewidth]{images_modelling/data_sources_decay.png}
+    \caption{Extrapolation of clinical trial results back to time zero, the time of onset of stroke}
+    \label{fig:decay}
 \end{figure}
 
 \subsection{Derivation of mRS distributions from reference data}
