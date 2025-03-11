@@ -184,11 +184,13 @@ For MT, treatment-related deaths must be inferred from available data. The steps
 \begin{itemize}
     \item We identified a reference data point where both the death rate and time to treatment were known. We use the mean time to treatment and the mortality rate from the HERMES meta-analysis \cite{goyal_endovascular_2016}.
     \item Use pre-stroke population as a surrogate for 'full recanalisation', but assume only 75\% patients achieve recanalisation \cite{hui_efficacy_2020}.
-    \item Assume that the benefiial effect of thrombectomy decays to zero in 6 hours \cite{fransen_time_2016}.
+    \item Assume that the beneficial effect of thrombectomy decays to zero in 6 hours \cite{fransen_time_2016}.
     \item Find the number of treatment-related deaths that would adjust the number of deaths at our given time point to the observed value. This figure is 4.0\%.
 \end{itemize}
 
-These steps are shown diagramtically in figure \ref{fig:mt_deaths}.
+These steps are shown diagrammatically in figure \ref{fig:mt_deaths}.
+
+Resulting estimates of treatment-realted deaths are shown in table \ref{tab:treatment_deaths}.  
 
 \begin{figure}[h!]
     \centering
@@ -198,16 +200,17 @@ These steps are shown diagramtically in figure \ref{fig:mt_deaths}.
 \end{figure}
 
 
-\begin{table}
-\centering
-\begin{tabular}{l | l}
-\caption{Estimated treatment-related deaths}\label{tab:treatment_deaths}
-Patient group & Treatment-related death rate\\
-\hline
-nLVO with IVT & \textbf{1.1\%}\\
-LVO with IVT & \textbf{3.4\%}\\
-LVO with MT & \textbf{4.0\%}\\
-\end{tabular}
+\begin{table}[h!]
+    \centering
+    \caption{Estimated treatment-related deaths}
+    \begin{tabular}{l l}
+    Patient group & Treatment-related death rate\\
+    \hline
+    nLVO with IVT & \textbf{1.1\%}\\
+    LVO with IVT & \textbf{3.4\%}\\
+    LVO with MT & \textbf{4.0\%}\\
+    \end{tabular}
+    \label{tab:treatment_deaths}
 \end{table}
 
 
