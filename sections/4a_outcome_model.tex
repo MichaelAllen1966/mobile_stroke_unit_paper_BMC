@@ -137,7 +137,7 @@ Figure \ref{fig:data_sources_grid} shows a summary of the data sources used to e
     \label{fig:data_sources_summary}
 \end{figure}
 
-\subsubsection{Pre-stroke mRS distribution}
+\subsubsection{Pre-stroke mRS distributions}
 
 The pre-stroke mRS distribution was from the national stroke audit for patients admitted to hospital with stroke between 2016 and 2018. A NIHSS of 0-10 was taken as a surrogate of LVO, and NIHSS 11+ as a surrogate of LVO. This cut-ff was found to have maximum discrimination between LVO and nLVO \cite{perez_de_la_ossa_effect_2022}. Resulting pre-stroke mRS distributions are shown in table \ref{tab:pre_stroke}
 
@@ -152,3 +152,31 @@ nLVO & 0.583 & 0.163 & 0.104 & 0.101 & 0.042 & 0.007 & 0 \\
 LVO & 0.408 & 0.144 & 0.12 & 0.166 & 0.118 & 0.044 & 0 \\
 \end{tabular}
 \end{table}
+
+\subsubsection{No treatment mRS distributions}
+
+For LVO, the estimated post-stroke mRS distribution was taken from the control population of the HEMRES trial \cite{goyal_endovascular_2016}. Though the control group also included patients who had received thrombolysis, patients who had been successfully treated with thrombolysis would typically not have reached selection for trials on thrombectomy \cite{tsivgoulis_successful_2018}.
+
+
+For nLVO, we take the control population from the thrombolysis clinical trials \cite{emberson_effect_2014}. The meta-analysis provides the mRS breakdown for control and treated groups (which will contain a mix of nLVO and LVO). The analysis also provides the proportion of patients mRS 0-1 for control and treated groups broken down into NIHSS subgroups. Those in the NIHSS 0-10 groups are assumed to be nLVO. The proportion mRS 0-1 in those subgroups is used to infer the full separate mRS distribution for patients in NIHSS 0-10 groups. 
+
+Resulting pre-stroke mRS distributions are shown in table \ref{tab:no_treatment}. 
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\linewidth]{images_modelling/data_sources_nlvo-no-treatment.png}
+    \caption{Deriving the predicted mRS distribution for untreated nLVO.}
+    \label{fig:data_sources_nlvo-no-treatment}
+\end{figure}
+
+\begin{table}
+\caption{No-treatment mRS distributions for nLVO and LVO}\label{tab:no_treatment}
+\centering
+\begin{tabular}{l | l l l l l l l}
+mRS & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\
+\hline
+nLVO & 0.198 & 0.262 & 0.120 & 0.128 & 0.148 & 0.062 & 0.082 \\
+LVO & 0.050 & 0.079 & 0.136 & 0.164 & 0.247 & 0.135 & 0.189 \\
+\end{tabular}
+\end{table}
+
