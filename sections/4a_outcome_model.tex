@@ -162,13 +162,6 @@ For nLVO, we take the control population from the thrombolysis clinical trials \
 
 Resulting pre-stroke mRS distributions are shown in table \ref{tab:no_treatment}. 
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=1.0\linewidth]{images_modelling/data_sources_nlvo-no-treatment.png}
-    \caption{Deriving the predicted mRS distribution for untreated nLVO.}
-    \label{fig:data_sources_nlvo-no-treatment}
-\end{figure}
-
 \begin{table}
 \caption{No-treatment mRS distributions for nLVO and LVO}\label{tab:no_treatment}
 \centering
@@ -179,4 +172,42 @@ nLVO & 0.198 & 0.262 & 0.120 & 0.128 & 0.148 & 0.062 & 0.082 \\
 LVO & 0.050 & 0.079 & 0.136 & 0.164 & 0.247 & 0.135 & 0.189 \\
 \end{tabular}
 \end{table}
+
+\subsubsection{Treatment at the no-effect time}
+
+For treatment at the no-effect time, we expect the distribution to be the same as untreated, but with some treatment-related deaths.
+
+For IVT, the meta-analysis of clinical trials \cite{emberson_effect_2014} reports deaths from intracranial haemorrhage. The IVT-related death rate is taken as the difference between treatment and control groups, split by NIHSS 0-10 (a surrogate for nLVO) and NIHSS 11+ (a surrogate for LVO).
+
+For MT, treatment-related deaths must be inferred from available data. The steps were:
+
+\begin{itemize}
+    \item We identified a reference data point where both the death rate and time to treatment were known. We use the mean time to treatment and the mortality rate from the HERMES meta-analysis \cite{goyal_endovascular_2016}.
+    \item Use pre-stroke population as a surrogate for 'full recanalisation', but assume only 75\% patients achieve recanalisation \cite{hui_efficacy_2020}.
+    \item Assume that the benefiial effect of thrombectomy decays to zero in 6 hours \cite{fransen_time_2016}.
+    \item Find the number of treatment-related deaths that would adjust the number of deaths at our given time point to the observed value. This figure is 4.0\%.
+\end{itemize}
+
+These steps are shown diagramtically in figure \ref{fig:mt_deaths}.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\linewidth]{images_modelling/data_sources_excess-death-mt.png}
+    \caption{Overview of method to estimate treatment-related deaths for MT.}
+    \label{fig:mt_deaths}
+\end{figure}
+
+
+\begin{table}
+\centering
+\begin{tabular}{l | l}
+\caption{Estimated treatment-related deaths}\label{tab:treatment_deaths}
+Patient group & Treatment-related death rate\\
+\hline
+nLVO with IVT & \textbf{1.1\%}\\
+LVO with IVT & \textbf{3.4\%}\\
+LVO with MT & \textbf{4.0\%}\\
+\end{tabular}
+\end{table}
+
 
