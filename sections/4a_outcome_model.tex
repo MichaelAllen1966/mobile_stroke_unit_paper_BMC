@@ -97,7 +97,7 @@ The final datasets will cover these three main groups of people:
     \item Patients with a Large-Vessel Occlusion (LVO) who were treated with mechanical thrombectomy (MT).
 \end{itemize}
 
-\subsection{General method}
+\subsubsection{General method}
 
 The steps to create the mRS distributions are:
 
@@ -203,7 +203,7 @@ For MT, treatment-related deaths must be inferred from available data. The steps
 
 These steps are shown diagrammatically in figure \ref{fig:mt_deaths}.
 
-Resulting estimates of treatment-realted deaths are shown in table \ref{tab:treatment_deaths}.  
+Resulting estimates of treatment-related deaths are shown in table \ref{tab:treatment_deaths}.  
 
 \begin{figure}[h!]
     \centering
@@ -225,5 +225,21 @@ Resulting estimates of treatment-realted deaths are shown in table \ref{tab:trea
     \end{tabular}
     \label{tab:treatment_deaths}
 \end{table}
+
+\subsection{Interpolating effectiveness of treatment depending on time to treatment}
+
+Once mRS distributions have been calculated for treatment given at time of stroke onset (time zero) and time of no-effectiveness of treatment, we interpolate between the two distributions based on a linear change in log-odds of reaching any given mRS threshold (which is the relationship used in clinical trials of thrombolysis and thrombectomy \cite{emberson_effect_2014, fransen_time_2016}). These may then be converted to odds, and then probability ($P = \frac{odds}{1 + odds}$).
+
+We assumed that the time of no-effect was 6.3 hours after stroke onset for IVT \cite{emberson_effect_2014}, and 8.0 hours for MT \cite{fransen_time_2016}.
+
+Figure \ref{fig:interpolation} shows interpolation of the effectiveness of treatment, using LVO treated with MT as an example.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=1.0\linewidth]{images_modelling/log_odds_to_probs.jpg}
+    \caption{Predicting outcomes based on interpolation between time of stroke onset and time of no-effect of treatment. This examples shows the effect of MT for patients with LVO stroke.}
+    \label{fig:interpolation}
+\end{figure}
+
 
 
