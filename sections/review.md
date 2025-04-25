@@ -101,7 +101,7 @@ Reponse - Thank we have added more to the discussion. We currently don't have su
 
 (4)     The time frames for transfer related ‘net MT delays’ are listed as 30, 60, 90.  Are these based on existing registry data?  We certainly have some small hospitals that can take a lot longer than 90 minutes for ‘door in door out time.’  Can you add somewhere where these times frames came from?  Really quite relevant to all time frame estimates.  Apologies if I overlooked this if already mentioned.
 
-Response: We have added to the discussion. In a stroke registry Froehler reported that transfer-related delays were on average 75 minutes + travel time. We have explored the range 30-90 minutes + travel time. We are biasing this investigation to assuming that transfer-related delays would more likely reduce rather than increase as MT becomes more established. But we acknowledge that in some instances delays could be longer, which we have added to the discussion.
+Response: We have added to the discussion. In a stroke registry Froehler reported that transfer-related delays were on average 75 minutes + travel time. We have explored the range 30-90 minutes + travel time. This was also agreed in co-production workshops involving representation from stroke consultants, ambulance staff and patients and public. We are likely biasing this investigation to assuming that transfer-related delays would more likely improve rather than worsen as MT becomes more established. But we acknowledge that in some instances delays could be longer, which we have added to the discussion.
 
 (5)     Discussion: in the para on clinician propensity to treat – this could also be mimicked by equipping regional hospitals with telestroke services and it would be worth mentioning this as another usual care service improvement opportunity. If telestroke already in place throughout England then the argument that MSU clinicians are more motivated would be less convincing.
 
@@ -121,7 +121,7 @@ Response: It is quite long - we have moved some methods to what is now a much mo
 
 (2)     Please define  Lower Super Output areas briefly in the abstract e.g. (~1500 people)
 
-Response - have done
+Response - have done (in the methods)
 
 (3)     The writing is unclear in a few places.  I list some examples below from abstract and introduction, but suggest you carefully review the entire manuscript once more:
 (a) First sentence in abstract is missing a word. Third sentence is difficult to follow.  Can this be split into two or at least the order? E.g. MSUs are XYZ and have been proposed as away…
