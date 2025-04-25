@@ -5,7 +5,7 @@
 
 \subsection{Modified Rankin scale}
 
-We used modified Rankin Scale (mRS) at 3-6 months as a measure of outcome. mRS is the instrument most commonly used to describe the functional outcome post-stroke \cite{quinn_functional_2009}, describing the independence of living on a scale of 0 (no disability) to 5 (severe disability requiring constant nursing attention), with death assigned an mRS of 6. A commonly used surrogate for independent living is mRS 0-2. The health utility values for each mRS level were taken from Wang \textit{et al.} \cite{wang_utility-weighted_2020}. These were 0.0, -0.19, 0.20, 0.55, 0.74, 0.88 and 0.97 for mRS 0-6. The mean mRS score, the mean utility, and the proportion of patients with mRS 0-2 in a given mRS distribution can be compared between scenarios. Table \ref{tab:mrs} shows a description of each mRS category.
+We used modified Rankin Scale (mRS) at 3-6 months as a measure of outcome. mRS is the instrument most commonly used to describe the functional outcome post-stroke \cite{quinn_functional_2009}, describing the independence of living on a scale of 0 (no disability) to 5 (severe disability requiring constant nursing attention), with death assigned an mRS of 6. A commonly used surrogate for independent living is mRS 0--2 at 3-6 months. The health utility values for each mRS level were taken from Wang \textit{et al.} \cite{wang_utility-weighted_2020}. These were 0.97, 0.88, 0.74, 0.55, 0.20, -0.19 and 0.0 mRS 0-6. The mean mRS score, the mean utility, and the proportion of patients with mRS 0--2 in a given mRS distribution can be compared between scenarios. Table \ref{tab:mrs} shows a description of each mRS category.
 
 \begin{minipage}{1.0\textwidth}  % Define the width of the minipage
 \begin{longtable}{p{1.2cm} p{13cm}}
@@ -33,7 +33,7 @@ Reperfusion treatment aims to restore blood flow after an ischaemic stroke. Ther
 \begin{itemize}
     \item \textit{Thrombolysis} (also known as intravenous thrombolysis, IVT) is a medical therapy in which clot-busting drugs are used to reduce or remove the blood clot. It is potentially of use in both nLVO and LVO.
     
-    \item \textit{Thrombectomy} (also known as mechanical thrombectomy, MT) is the physical removal of a clot, by a mesh device under image guidance. Thrombectomy is suitable only for clots in a large vessel (these generally cause the worst strokes). It is potentially of use in LVO, especially those LVO with stroke severity of NIHSS 6+, which comprise 80\% of LVO \cite{mcmeekin_estimating_2017}.
+    \item \textit{Thrombectomy} (also known as mechanical thrombectomy, MT) is the physical removal of a clot, by a mesh device under X-ray imaging guidance. Thrombectomy is suitable only for clots in a large vessel (these generally cause the worst strokes). It is potentially of use in LVO, especially those LVO with stroke severity of NIHSS 6+, which comprise 80\% of LVO \cite{mcmeekin_estimating_2017}.
 \end{itemize}
 
 
@@ -41,7 +41,7 @@ Reperfusion treatment aims to restore blood flow after an ischaemic stroke. Ther
 
 Detailed methods and code used for modelling these outcomes are available \cite{github2}, with methods described as an online book \cite{github3}. The outcome model is available as a PyPI package for Python \cite{pypi}.
 
-We used modified Rankin Scale (mRS) at 3-6 months as a measure of outcome in different scenarios. The mean mRS score, mean utility and proportion of patients with mRS 0-2 in a given mRS distribution were compared between scenarios.
+We used modified Rankin Scale (mRS) at 3-6 months as a measure of outcome in different scenarios. The mean mRS score, mean utility and proportion of patients with mRS 0--2 in a given mRS distribution were compared between scenarios.
 
 We calculated the patients mRS outcome distribution based on time to treatment for three cohorts of treated patients: 1) Patients with nLVO treated with IVT; 2) Patients with LVO treated with IVT alone; 3) Patients with LVO treated with IVT and MT. For each patient-treatment cohort we calculated an mRS distribution for treatment at any given time by interpolating between the mRS distribution for treatment given at \emph{t=0} (time of stroke onset) and the mRS distribution for treatment given at \emph{t=No Effect} (time of no effect of treatment), assuming that log odds fall linearly over time, as used in clinical trial meta-analysis \cite{emberson_effect_2014, fransen_time_2016}.
 
