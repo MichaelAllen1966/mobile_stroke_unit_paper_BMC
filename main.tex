@@ -60,18 +60,17 @@
 \begin{refsection} % Allows separate references for main paper and, later, appendix
 
 
-%\input{sections/2_abstract}
-%\input{sections/3_introduction}
-%\input{sections/4_methods}
-\input{sections/4a_outcome_model}
-%\input{sections/5_results}
-%\input{sections/6_discussion}
+\input{sections/2_abstract}
+\input{sections/3_introduction}
+\input{sections/4_methods}
+\input{sections/5_results}
+\input{sections/6_discussion}
 % References
 \clearpage
 \newpage
 \printbibliography
 \end{refsection}
-\include{sections/7_other_material}
+%\include{sections/7_other_material}
 %\include{sections/9_figures}
 
 % Number for supplementary material
@@ -84,10 +83,14 @@
     \renewcommand{\thetable}{S\arabic{table}}
 
 }
+\clearpage
+\newpage
 \begin{refsection} % Start referencing again for appendix
 \beginsupplement
 %TC:igno
-\include{sections/8_supplementarty_material}
+\appendix
+\input{sections/4a_outcome_model}
+%\include{sections/8_supplementarty_material}
 \printbibliography[title={References for supplementary material}]
 %TC:endignore
 \end{refsection}

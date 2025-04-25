@@ -1,10 +1,11 @@
-%%%%%%%%%%%%%% Change all tenses to past tesse
+%%%%%%%%%%%%%% Change all tenses to past tense
+%%%%%%%%%%%%%%% Check IVT ? MT - define once
 
-\section{Outcome modelling}
+\section{Supplementary material - Outcome modelling}
 
 \subsection{Modified Rankin scale}
 
-We used modified Rankin Scale (mRS) at 6 months as a measure of outcome. mRS is the instrument most commonly used to describe the functional outcome post-stroke \cite{quinn_functional_2009}, describing the independence of living on a scale of 0 (no disability) to 5 (severe disability requiring constant nursing attention), with death assigned an mRS of 6. A commonly used surrogate for independent living is mRS 0-2. The health utility values for each mRS level were taken from Wang \textit{et al.} \cite{wang_utility-weighted_2020}. These were 0.0, -0.19, 0.20, 0.55, 0.74, 0.88 and 0.97 for mRS 0-6. The mean mRS score, the mean utility, and the proportion of patients with mRS 0-2 in a given mRS distribution can be compared between scenarios. Table \ref{tab:mrs} shows a description of each mRS category.
+We used modified Rankin Scale (mRS) at 3-6 months as a measure of outcome. mRS is the instrument most commonly used to describe the functional outcome post-stroke \cite{quinn_functional_2009}, describing the independence of living on a scale of 0 (no disability) to 5 (severe disability requiring constant nursing attention), with death assigned an mRS of 6. A commonly used surrogate for independent living is mRS 0-2. The health utility values for each mRS level were taken from Wang \textit{et al.} \cite{wang_utility-weighted_2020}. These were 0.0, -0.19, 0.20, 0.55, 0.74, 0.88 and 0.97 for mRS 0-6. The mean mRS score, the mean utility, and the proportion of patients with mRS 0-2 in a given mRS distribution can be compared between scenarios. Table \ref{tab:mrs} shows a description of each mRS category.
 
 \begin{minipage}{1.0\textwidth}  % Define the width of the minipage
 \begin{longtable}{p{1.2cm} p{13cm}}
@@ -32,7 +33,7 @@ Reperfusion treatment aims to restore blood flow after an ischaemic stroke. Ther
 \begin{itemize}
     \item \textit{Thrombolysis} (also known as intravenous thrombolysis, IVT) is a medical therapy in which clot-busting drugs are used to reduce or remove the blood clot. It is potentially of use in both nLVO and LVO.
     
-    \item \textit{Thrombectomy} (also known as mechanical thrombectomy, MT) is the physical removal of a clot, by a mesh device under image guidance. Thrombectomy is suitable only for clots in a large vessel (these generally cause the worst strokes). It is potentially of use in LVO.
+    \item \textit{Thrombectomy} (also known as mechanical thrombectomy, MT) is the physical removal of a clot, by a mesh device under image guidance. Thrombectomy is suitable only for clots in a large vessel (these generally cause the worst strokes). It is potentially of use in LVO, especially those LVO with stroke severity of NIHSS 6+, which comprise 80\% of LVO \cite{mcmeekin_estimating_2017}.
 \end{itemize}
 
 
@@ -40,33 +41,33 @@ Reperfusion treatment aims to restore blood flow after an ischaemic stroke. Ther
 
 Detailed methods and code used for modelling these outcomes are available \cite{github2}, with methods described as an online book \cite{github3}. The outcome model is available as a PyPI package for Python \cite{pypi}.
 
-We used modified Rankin Scale (mRS) at 3-6 months as a measure of outcome. mRS is the most commonly used instrument to describe post-stroke functional outcome \cite{quinn_functional_2009}, describing independence of living from a scale of 0 (no disability) through to 5 (severe disability requiring constant nursing attention), with death assigned an mRS of 6. A commonly used surrogate for independent living is  mRS 0-2. Health utility values for each mRS level were taken from Wang \textit{et al.} \cite{wang_utility-weighted_2020}. The mean mRS score, mean utility and proportion of patients with mRS 0-2 in a given mRS distribution can be compared between scenarios.
+We used modified Rankin Scale (mRS) at 3-6 months as a measure of outcome in different scenarios. The mean mRS score, mean utility and proportion of patients with mRS 0-2 in a given mRS distribution were compared between scenarios.
 
-We calculated the patients mRS outcome distribution based on time to treatment for three patient-treatment cohorts: nLVO treated with IVT; LVO treated with IVT alone; and LVO treated with IVT and MT. For each patient-treatment cohort we calculated an mRS distribution for treatment at any given time by interpolating between the mRS distribution for treatment given at \emph{t=0} (time of stroke onset) and the mRS distribution for treatment given at \emph{t=No Effect} (time of no effect of treatment), assuming that log odds fall linearly over time \cite{emberson_effect_2014, fransen_time_2016}.
+We calculated the patients mRS outcome distribution based on time to treatment for three cohorts of treated patients: 1) Patients with nLVO treated with IVT; 2) Patients with LVO treated with IVT alone; 3) Patients with LVO treated with IVT and MT. For each patient-treatment cohort we calculated an mRS distribution for treatment at any given time by interpolating between the mRS distribution for treatment given at \emph{t=0} (time of stroke onset) and the mRS distribution for treatment given at \emph{t=No Effect} (time of no effect of treatment), assuming that log odds fall linearly over time, as used in clinical trial meta-analysis \cite{emberson_effect_2014, fransen_time_2016}.
 
-The time to no effect was 6.3 hours for IVT \cite{emberson_effect_2014} and 8.0 hours for MT \cite{ fransen_time_2016}. Our model did not include selection of patients who may still benefit from treatment beyond these durations through the use of perfusion scanning. This number is small for IVT, but is more substantial for MT – approximately 2,500 per annum in England. 
+The time to no effect was assumed to be 6.3 hours for IVT \cite{emberson_effect_2014} and 8.0 hours for MT \cite{fransen_time_2016}. Our model did not include the selection of patients who may still benefit from treatment beyond these durations through the use of advanced imaging. This number is small, of late treatment is likely to be small for IVT, but is more substantial for MT – approximately 2,500 per year in England. 
 
-The model synthesises data from multiple sources (figure \ref{fig:data_cauldron}) including reperfusion treatment clinical trials and national stroke audit data for England and Wales. Predictions from the combined model are then compared against original clinical trials and other models. Details of how these data are synthesised are given in the sections below.
+The model synthesised data from multiple sources (figure \ref{fig:data_cauldron}) including reperfusion treatment clinical trials and national stroke audit data for England and Wales. Predictions from the combined model were then compared against original clinical trials and other models. Details of how these data were synthesised are given in the sections below.
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1.0\linewidth]{images_modelling/data_cauldron.png}
-    \caption{Depiction of hoe multiple data sources are combined to produce a mRS-level outcome model of nLVO and LVO stroke treated with thrombolysis and/or thrombectomy.}
+    \caption{Depiction of how multiple data sources were combined to produce a mRS-level outcome model of nLVO and LVO stroke treated with thrombolysis and/or thrombectomy.}
     \label{fig:data_cauldron}
 \end{figure}
 
-The model results in mRS probability distributions for nLVO treated with IVT and LVO treated with IVT or MT (Figure \ref{fig:probs_with_time}).
+The model produces mRS probability distributions for nLVO treated with IVT and LVO treated with IVT and/or MT, with the benefit of treatment decreasing over time after the appearance of stoke (Figure \ref{fig:probs_with_time}).
 
 \begin{figure}[h!]
     \centering
     \includegraphics[width=1.0\linewidth]{images_modelling/probs_with_time.png}
-    \caption{Final model predictions of mRS distributions for nLVO and LVO depending on time to treatment with IVT (for nLVO or LVO) or thrombectomy (for IVT and LVO).}
+    \caption{Model predictions of mRS distributions for nLVO and LVO depending on time to treatment with IVT (for nLVO or LVO) or MT (for IVT and LVO).}
     \label{fig:probs_with_time}
 \end{figure}
 
 \subsection{Extrapolation of reperfusion effects back to time zero}
 
-In order to model the effectiveness of reperfusion at any given time point, we interpolate between the theoretical effectiveness at time zero (the time of stroke onset) and the time at which the treatment no longer has any efficacy (the time of no effect). Clinical trials model this decay as a linear decay on log odds of improved outcome \cite{emberson_effect_2014, fransen_time_2016}. An illustration of how this was done is shown in figure \ref{fig:decay}.
+In order to model the effectiveness of reperfusion at any given time point, we interpolated between the theoretical effectiveness at time zero (the time of stroke onset) and the time at which the treatment no longer has any clinical benefit (the time of no effect). Clinical trials model this decay as a linear decay in logarithmic odds of an improved outcome \cite{emberson_effect_2014, fransen_time_2016}. An illustration of how this was done is shown in figure \ref{fig:decay}.
 
 \begin{figure}[h!]
     \centering
@@ -77,51 +78,31 @@ In order to model the effectiveness of reperfusion at any given time point, we i
 
 \subsection{Derivation of mRS distributions from reference data}
 
-\subsubsection{Plain English summary}
-
-When we predict the outcome of a person who has had a stroke, we want to be able to say what is the likely improvement in disability level they would experience due to the treatment.
-
-The modified Rankin Scale is used to assign a level of disability to a patient who has had a stroke. When looking at the mRS scores of a whole population, some scores are more likely to occur than others depending on who is included in that population. The improvement in disability level they can get will depend on the time from when their stroke symptoms began and when they receive treatment. The best possible outcome would be if they were treated immediately after they had their stroke. The benefit of treatment reduces over time until the treatment no longer offers any benefit, and they will not be better off than having no treatment. We can look at the proportion of people with each mRS score as the \emph{probability} of having that mRS score.
-
-The main aim of the stroke outcome model is to be able to predict the range of mRS scores of various different populations. We would like to know the expected mRS scores of groups of people before a stroke, people who received no treatment for their stroke, and people who were treated at any chosen time after their stroke began. There is no real-life data for this last group of people. However we can create a model that creates that data by combining other real-life datasets. The real-life datasets come from various clinical trials.
-
-We assume that the mRS scores of people after stroke depend on their time to treatment. The more time that passes between the start of the stroke and the treatment, the more likely it is that people will have higher disability scores. This continues up until a \emph{time of no effect} where the patients cannot benefit from the treatment but still run the risks of death due to the treatment.
-
-This document shows how to combine the real-life datasets to create mRS distributions that will be used everywhere in the stroke outcome model.
-
-The final datasets will cover these three main groups of people:
-
-\begin{itemize}
-    \item Patients with a non-Large-Vessel Occlusion (nLVO) who were treated with intravenous thrombolysis (IVT).
-    \item Patients with a Large-Vessel Occlusion (LVO) who were treated with intravenous thrombolysis (IVT).
-    \item Patients with a Large-Vessel Occlusion (LVO) who were treated with mechanical thrombectomy (MT).
-\end{itemize}
-
 \subsubsection{General method}
 
-The steps to create the mRS distributions are:
+The steps used to create the mRS distributions were:
 
 \begin{enumerate}
-    \item Estimate the mRS distributions of populations before their stroke.
+    \item We estimated the mRS distributions of populations before their stroke.
     \begin{itemize}
-        \item These data are available in the SSNAP data.
-        \item We split the full cohort of patients into nLVO and LVO based on their NIHSS score (using NIHSS 11+ as a surrogate indicator of a large vessel occlusion stroke).
+        \item These data were available in the UK national stroke audit (SSNAP) data.
+        \item We split the full cohort of patients into nLVO and LVO based on their NIHSS score (using NIHSS 11+ as a surrogate indicator of a large vessel occlusion stroke that will be treatable by MT).
     \end{itemize}
-     \item Estimate the mRS distributions of populations that received no treatment.
+     \item We estimated the mRS distributions of populations that received no treatment.
     \begin{itemize}
-        \item This data is available for two groups. The first group is patients with LVOs. The second group is a mix of patients with nLVOs and patients with LVOs.
-        \item We combine the groups and infer the distribution for the population patients with nLVO (as nLVO-specific data is not available).
+        \item This data was available for two groups. The first group was patients with LVOs. The second group was a mix of patients with nLVOs and patients with LVOs.
+        \item We combined the groups and inferred the distribution for the population patients with nLVO (as nLVO-specific data is not available, but may be estimated by the diffence between LVO and mixed nLVO/LVO groups).
     \end{itemize}
-        \item Estimate the mRS distributions of populations if they treated at the time of no beneficial effect.
+        \item We estimated the mRS distributions of populations if they were treated at the time of no beneficial effect.
     \begin{itemize}
-        \item At the time of no effect, we assume that patients given the treatment will see no benefit but are still exposed to a risk of death from treatment.
-    \item We take the distributions for populations that received no treatment and adjust them for this predicted death rate in the absence of a beneficial treatment effect.
+        \item At the time of no effect, we assumed that patients given the treatment will see no benefit but are still exposed to a risk of death from treatment.
+    \item We take the distributions for populations that received no treatment and adjusted them for this predicted death rate in the absence of a beneficial treatment effect.
     \end{itemize}
-    \item Estimate the mRS distributions of populations if they were treated at time zero (the time of stroke).
+    \item We estimated the mRS distributions of populations if they were treated at time zero (the time of stroke).
     \begin{itemize}
         \item For IVT:
         \begin{itemize}
-            \item We take reference data points for mRS $\leq$ 1 at time zero and the mRS distributions at the time of no effect. Plugging these into a formula for the changing probability of the mRS $\leq$ 1 score with time lets us find the probability distributions at time zero.
+            \item We took reference data points for mRS $\leq$ 1 at time zero and the mRS distributions at the time of no effect. From these data points, we were able to estimate the probability distribution at time zero.
             \item Fixing this point, we take a weighted combination of the pre-stroke and no-effect distributions so that the combination's mRS $\leq$ point matches the fixed point.
         \end{itemize}     
     \end{itemize}
@@ -129,7 +110,7 @@ The steps to create the mRS distributions are:
         \item For MT:
         \begin{itemize}
             \item Define the time-zero distribution as a weighted combination of 75\% of the pre-stroke distribution and 25\% of the no-effect distribution.
-            \item Adjust the excess death rate until the mRS distribution at a reference data time matches the mortality rate at that reference time. 
+            \item Adjust the treatment-related death rate until the mRS distribution at a reference data time matches the mortality rate at that reference time. 
         \end{itemize}
     \end{itemize}    
 \end{enumerate}
@@ -152,7 +133,7 @@ Figure \ref{fig:data_sources_grid} shows a summary of the data sources used to e
 
 \subsubsection{Pre-stroke mRS distributions}
 
-The pre-stroke mRS distribution was from the national stroke audit for patients admitted to hospital with stroke between 2016 and 2018. A NIHSS of 0-10 was taken as a surrogate of LVO, and NIHSS 11+ as a surrogate of LVO. This cut-ff was found to have maximum discrimination between LVO and nLVO \cite{perez_de_la_ossa_effect_2022}. Resulting pre-stroke mRS distributions are shown in table \ref{tab:pre_stroke}
+The pre-stroke mRS distribution was from the national stroke audit for patients admitted to hospital with stroke between 2016 and 2018. A NIHSS of 0-10 was taken as a surrogate of LVO, and NIHSS 11+ as a surrogate of LVO. This cut-off was found to have maximum discrimination between LVO and nLVO \cite{perez_de_la_ossa_effect_2022}. Resulting pre-stroke mRS distributions are shown in table \ref{tab:pre_stroke}
 
 \begin{table}
 \caption{Pre-stroke mRS distributions for nLVO and LVO}\label{tab:pre_stroke}
@@ -242,6 +223,13 @@ Figure \ref{fig:interpolation} shows interpolation of the effectiveness of treat
 
 \subsection{Proportion of patients with large vessel occlusion}
 
+The proportion of patients with LVO depends on the population under study.
+
+In the RACECAT trial of pre-hospital selection of patients with LVO \cite{perez_de_la_ossa_effect_2022}, 34\% of all stroke, and 41\% of ischaemic stroke were LVO.
+
+In a study analysing the proportion of stroke patients likely to benefit from thrombectomy McMeekin\textit{ et al.} \cite{mcmeekin_estimating_2017} reported that 40\% of ischaemic stroke patients had a LVO, with 80\% of those (0r 32\% of all ischaemic stroke) having NIHSS 6+ (suggesting they may benefit from thrombectomy). 
+
+In an analysis of SSNAP stroke audit data, for those arriving within 4 hours of stroke onset, 29\% of all stroke and 34\% of ischaemic stroke were NIHSS 11+ (a surrogate for LVO). Table \ref{tab_stroke_type} gives a more complete breakdown of SSNAP data.
 
 \begin{minipage}{1.0\textwidth}
 \begin{longtable}[]{p{6.3cm} | p{2.5cm} p{2.5cm} p{2.5cm}}
@@ -260,3 +248,5 @@ Proportion ischaemic with NIHSS 11+ & 25.1 & 32.6 & 34.3 \\
 \footnotesize{*From \url{https://samuel-book.github.io/samuel-1/descriptive_stats/10_using_nihss_10_for_lvo.html}}
  
 \end{minipage}
+
+In this study we assumed that the treatable population was compromised of 30\% LVO (treatable with IVT and/or MT) and 70\% nLVO (treatable with IVT only).
